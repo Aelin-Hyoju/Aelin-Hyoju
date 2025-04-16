@@ -1,0 +1,404 @@
+/* Profile Page Specific Styles */
+
+/* Add padding matching header height to prevent content overlap */
+.profile-page-content {
+    padding-top: 80px;
+}
+
+/* Core Strengths Grid */
+.strengths-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Skills & Tools Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Match strengths grid */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Shared Timeline Item/Content Styles (Used by Experience Slider & Education Timeline) */
+.timeline-item {
+    position: relative;
+    margin-bottom: 0; /* Remove bottom margin for slides */
+    width: 100%; /* Let Swiper control width */
+    box-sizing: border-box;
+    /* Add min-height to ensure visibility initially */
+    min-height: 200px; /* Adjust as needed */
+}
+
+.timeline-content {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 8px;
+    position: relative;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    /* Remove fixed height, let content define it */
+    /* height: 100%; */
+    box-sizing: border-box;
+    display: flex; /* Flexbox to push date down if needed */
+    flex-direction: column;
+    height: 100%; /* Ensure content fills slide height for alignment */
+}
+
+.timeline-content h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+}
+
+.timeline-content .date {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 15px;
+}
+
+.timeline-content p,
+.timeline-content ul {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.timeline-content ul {
+    padding-left: 20px;
+    list-style: disc;
+    flex-grow: 1; /* Allow list to take remaining space */
+}
+
+.timeline-content ul li {
+    margin-bottom: 8px;
+}
+
+
+/* Horizontal Experience Slider Styles */
+.experience-slider {
+    width: 100%;
+    margin-top: 40px;
+    position: relative;
+    padding-bottom: 60px; /* Space for pagination/navigation */
+}
+
+.experience-slider .swiper-slide {
+    height: auto; /* Allow height to adjust to content */
+    align-self: stretch; /* Ensure slides stretch vertically if needed */
+}
+
+/* Style Experience Slider Navigation/Pagination */
+.experience-slider .experience-button-next,
+.experience-slider .experience-button-prev {
+    color: var(--primary-color);
+    background-color: rgba(44, 44, 44, 0.7);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    position: absolute; /* Position them relative to slider */
+    bottom: 0px; /* Position at the bottom */
+    top: auto; /* Reset top */
+    transform: translateY(0); /* Reset transform */
+    z-index: 10;
+}
+
+.experience-slider .experience-button-prev {
+    left: calc(50% - 40px - 22px); /* Center align with spacing */
+}
+
+.experience-slider .experience-button-next {
+    right: calc(50% - 40px - 22px); /* Center align with spacing */
+}
+
+.experience-slider .experience-button-next:hover,
+.experience-slider .experience-button-prev:hover {
+    background-color: rgba(52, 152, 219, 0.8);
+    color: var(--white);
+}
+
+.experience-slider .experience-button-next::after,
+.experience-slider .experience-button-prev::after {
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.experience-slider .experience-pagination {
+    position: absolute; /* Position relative to slider */
+    bottom: 10px; /* Position at the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto; /* Auto width for centered bullets */
+}
+
+.experience-slider .experience-pagination .swiper-pagination-bullet {
+    background-color: var(--text-color);
+    opacity: 0.6;
+    width: 10px;
+    height: 10px;
+}
+
+.experience-slider .experience-pagination .swiper-pagination-bullet-active {
+    background-color: var(--primary-color);
+    opacity: 1;
+}
+
+
+/* Vertical Education Timeline Styles */
+.education-timeline {
+    position: relative;
+    max-width: 900px; /* Match experience slider width */
+    margin: 50px auto;
+    padding: 20px 0;
+}
+
+.education-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.education-timeline .timeline-item {
+     width: calc(50% - 40px); /* Re-apply width calculation */
+     margin-bottom: 50px; /* Add margin back for vertical layout */
+}
+
+.education-timeline .timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 40px;
+    text-align: right;
+}
+
+.education-timeline .timeline-item:nth-child(even) {
+    left: calc(50% + 40px);
+    padding-left: 0;
+}
+
+.education-timeline .timeline-item::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    right: -22px;
+    width: 16px;
+    height: 16px;
+    background-color: var(--bg-color);
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.education-timeline .timeline-item:nth-child(even)::after {
+    left: -22px;
+    right: auto;
+}
+
+/* Responsive adjustments for Profile Page */
+@media (max-width: 768px) {
+
+    /* Reduce section padding */
+    .profile-page-content section {
+        padding: 60px 0;
+    }
+
+    /* Adjust grid columns for tablet */
+    .strengths-grid,
+    .skills-grid {
+        /* Maybe keep 2 columns or adjust minmax */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    /* Adjust heading sizes */
+     .profile-page-content h2 {
+        font-size: 2rem;
+    }
+    .timeline-content h3 {
+        font-size: 1.3rem;
+    }
+
+    /* Experience Slider mobile adjustments */
+    .experience-slider .experience-button-prev {
+        left: 10px;
+        transform: translateX(0);
+    }
+
+    .experience-slider .experience-button-next {
+        right: 10px;
+        transform: translateX(0);
+        left: auto;
+    }
+
+     .experience-slider .experience-pagination {
+        bottom: 5px;
+    }
+
+    /* Education timeline mobile adjustments */
+    .education-timeline::before {
+        left: 20px;
+        transform: translateX(0);
+    }
+
+    .education-timeline .timeline-item {
+        width: 100%;
+        padding-left: 60px;
+        padding-right: 20px;
+        margin-bottom: 30px;
+    }
+
+    .education-timeline .timeline-item:nth-child(odd) {
+        left: 0;
+        text-align: left;
+        padding-right: 20px;
+    }
+
+    .education-timeline .timeline-item:nth-child(even) {
+        left: 0;
+        padding-left: 60px;
+    }
+
+    .education-timeline .timeline-item::after {
+        left: 12px;
+        right: auto;
+        top: 5px;
+    }
+
+    .education-timeline .timeline-item:nth-child(even)::after {
+        left: 12px;
+    }
+
+    .education-timeline .timeline-content {
+        padding: 20px;
+    }
+
+    .education-timeline .timeline-content h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Additional adjustments for smaller mobile */
+@media (max-width: 480px) {
+    /* Further reduce section padding */
+    .profile-page-content section {
+        padding: 40px 0;
+    }
+
+    /* Force single column for grids */
+    .strengths-grid,
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 25px; /* Slightly more gap for single column */
+    }
+
+     /* Adjust heading sizes */
+     .profile-page-content h2 {
+        font-size: 1.8rem;
+    }
+    .timeline-content h3 {
+        font-size: 1.2rem;
+    }
+     .education-timeline .timeline-content h3 {
+        font-size: 1.1rem; /* Further reduce for education */
+    }
+
+    /* Ensure timeline content padding is adequate */
+    .timeline-content {
+        padding: 20px;
+    }
+}
+
+/* How I Work Section */
+.how-i-work {
+    background-color: var(--bg-color); /* Match alternating section style */
+}
+
+.how-i-work .work-intro {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.how-i-work .attribute-item {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.how-i-work .attribute-item h3 {
+     font-size: 1.1rem;
+     margin-top: 10px;
+     margin-bottom: 0;
+     color: var(--primary-color);
+}
+
+.how-i-work .work-summary {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 40px;
+    color: var(--primary-color);
+}
+
+/* Certifications & Extras Section */
+.extras {
+    background-color: var(--card-bg);
+}
+
+.extras-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.extras-column h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    display: inline-block; /* Make border fit content */
+}
+
+.extras-column h3 .icon {
+    margin-right: 8px;
+}
+
+.extras-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0; /* Add space below each list */
+}
+
+.extras-column ul li {
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    position: relative;
+    padding-left: 20px;
+}
+
+.extras-column ul li::before {
+    content: '\2022'; /* Simple bullet */
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+} 
