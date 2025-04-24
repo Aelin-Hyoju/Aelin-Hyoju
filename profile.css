@@ -401,4 +401,135 @@
     position: absolute;
     left: 0;
     top: 0;
+}
+
+/* Gallery and Instagram Embed Styles */
+.gallery {
+    padding: 80px 0;
+    background-color: var(--light-bg);
+}
+
+.instagram-embed {
+    margin: 40px auto;
+    max-width: 540px;
+    width: 100%;
+}
+
+.instagram-embed iframe {
+    width: 100% !important;
+    min-width: unset !important;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* About Section Styles */
+.about-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-swiper {
+    display: none; /* Hide by default, show only on mobile */
+    width: 100%;
+    margin-top: 40px;
+    position: relative;
+    padding-bottom: 60px; /* Space for pagination/navigation */
+}
+
+.about-swiper .swiper-slide {
+    height: auto; /* Allow height to adjust to content */
+    align-self: stretch; /* Ensure slides stretch vertically if needed */
+}
+
+/* Style About Slider Navigation/Pagination */
+.about-swiper .about-button-next,
+.about-swiper .about-button-prev {
+    color: var(--primary-color);
+    background-color: rgba(44, 44, 44, 0.7);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 0px;
+    top: auto;
+    transform: translateY(0);
+    z-index: 10;
+}
+
+.about-swiper .about-button-prev {
+    left: calc(50% - 40px - 22px);
+}
+
+.about-swiper .about-button-next {
+    right: calc(50% - 40px - 22px);
+}
+
+.about-swiper .about-button-next:hover,
+.about-swiper .about-button-prev:hover {
+    background-color: rgba(52, 152, 219, 0.8);
+    color: var(--white);
+}
+
+.about-swiper .about-button-next::after,
+.about-swiper .about-button-prev::after {
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.about-swiper .about-pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+}
+
+.about-swiper .about-pagination .swiper-pagination-bullet {
+    background-color: var(--text-color);
+    opacity: 0.6;
+    width: 10px;
+    height: 10px;
+}
+
+.about-swiper .about-pagination .swiper-pagination-bullet-active {
+    background-color: var(--primary-color);
+    opacity: 1;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .about-content {
+        display: none; /* Hide grid layout on mobile */
+    }
+
+    .about-swiper {
+        display: block; /* Show slider on mobile */
+    }
+
+    /* Adjust navigation buttons for mobile */
+    .about-swiper .about-button-prev {
+        left: 10px;
+        transform: translateX(0);
+    }
+
+    .about-swiper .about-button-next {
+        right: 10px;
+        transform: translateX(0);
+        left: auto;
+    }
+
+    .about-swiper .about-pagination {
+        bottom: 5px;
+    }
 } 
